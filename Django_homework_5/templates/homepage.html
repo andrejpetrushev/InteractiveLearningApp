@@ -13,16 +13,17 @@
 <h3>Почетна страна</h3>
 <ul class="nav justify-content-center">
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="informatics&foreign_languages.html">Курсеви</a>
+        <a class="nav-link active" aria-current="page" href="http://localhost:8000/InformaticsForeignLanguages/">Курсеви</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="knowledge_check.html">Проверка на знаење</a>
+        <a class="nav-link" href="http://localhost:8000/knowledgecheck">Проверка на знаење</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="discussions.html">Форум за дискусии</a>
+        <a class="nav-link" href="http://localhost:8000/discussions">Форум за дискусии</a>
     </li>
 </ul>
-<img src="../images/ss-home-page-2.png" class="img-fluid" alt="Homepage">
+{#<img src="../images/ss-home-page-2.png" class="img-fluid" alt="Homepage">#}
+{% load static %} <img src="{% static "../images/ss-home-page-2.png" %}" alt="Homepage" />
 <button type="button" class="btn">Одјави се!</button>
 <form class="d-flex" role="search">
     <input class="form-control me-2" type="search" placeholder="Пребарај" aria-label="Пребарај">

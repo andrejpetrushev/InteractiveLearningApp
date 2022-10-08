@@ -36,6 +36,7 @@
             /* The image used */
             background-image: url("/images/ss-language-courses.png");
 
+
             /* Full height */
             height: 100%;
 
@@ -51,7 +52,10 @@
 <div class="bg">
     <div class="headingThree"><h3 id="heading3">Биди и ти дел од интерактивниот систем за онлајн учење!</h3></div>
     <h1 id="heading1">INFOLAN</h1>
-    <button type="button" class="btn btn-info">Започни</button>
+    <button type="button" class="btn btn-info"><a href="login/">Започни</a></button>
+    <div class="bg1">
+        {% load static %} <img src="{% static "images/ss-language-courses.png" %}" alt="LC" />
+    </div>
 </div>
 </body>
 </html>

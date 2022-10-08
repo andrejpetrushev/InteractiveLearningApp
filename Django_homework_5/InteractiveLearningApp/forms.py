@@ -12,7 +12,7 @@ class LessonForm(forms.ModelForm):
 
     class Meta:
         model = Lesson
-        exclude = ("user",)
+        fields = "__all__"
 
 
 class LanguageForm(forms.ModelForm):
@@ -25,7 +25,7 @@ class LanguageForm(forms.ModelForm):
 
     class Meta:
         model = Language
-        exclude = ("user",)
+        fields = "__all__"
 
 
 class DiscussionForm(forms.ModelForm):
@@ -38,7 +38,8 @@ class DiscussionForm(forms.ModelForm):
 
     class Meta:
         model = Discussion
-        exclude = ("user",)
+        exclude = ("author",)
+        fields = ['title', 'date']
 
 
 class UserProfileForm(forms.ModelForm):
@@ -52,6 +53,7 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         exclude = ("user",)
+        fields = ['email', 'password']
 
 
 class InfoCourseForm(forms.ModelForm):
@@ -64,7 +66,7 @@ class InfoCourseForm(forms.ModelForm):
 
     class Meta:
         model = InfoCourse
-        exclude = ("user",)
+        fields = "__all__"
 
 
 class TestQuizForm(forms.ModelForm):
@@ -78,3 +80,16 @@ class TestQuizForm(forms.ModelForm):
     class Meta:
         model = TestQuiz
         exclude = ("user1",)
+        fields = ['question', 'answer', 'result', 'percents']
+
+
+class createuserform(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(createuserform, self).__init__(*args, **kwargs)
+        for field in self.visible_fields():
+            print(field)
+            field.field.widget.attrs["class"] = "form-control"
+
+    class Meta:
+        model = UserProfile
+        exclude = ("user",)

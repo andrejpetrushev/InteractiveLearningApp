@@ -10,7 +10,8 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<img src="../images/ss-foreign-language.png" class="img-fluid" alt="Parts of foreign language">
+{#<img src="../images/ss-foreign-language.png" class="img-fluid" alt="Parts of foreign language">#}
+{% load static %} <img src="{% static "../images/ss-foreign-language.png" %}" alt="Parts of foreign language" />
 <div class="col-12">
     <button class="btn " type="submit">Граматика</button>
 </div>

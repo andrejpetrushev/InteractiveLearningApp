@@ -11,7 +11,8 @@
 </head>
 <body>
 <h2>Дел за регистрација</h2>
-<img src="../images/ss-register-2.png" class="img-fluid" alt="Register">
+{#<img src="../images/ss-register-2.png" class="img-fluid" alt="Register">#}
+ {% load static %} <img src="{% static "images/ss-register-2.png" %}" class="img-fluid" alt="Register" />
 <form class="row g-3 needs-validation" novalidate>
     <div class="col-md-4">
         <label for="validationCustom01" class="form-label">Име</label>
@@ -53,7 +54,7 @@
         </div>
     </div>
     <div class="col-12">
-        <button class="btn btn-primary" type="submit">Регистрирај се!</button>
+        <button class="btn btn-primary" type="submit"><a href="http://localhost:8000/homepage/">Регистрирај се!</a></button>
     </div>
 </form>
 </body>

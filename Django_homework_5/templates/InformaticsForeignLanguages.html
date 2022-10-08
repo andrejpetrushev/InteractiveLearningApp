@@ -12,7 +12,7 @@
 <body>
 <a href="info_courses.html">Информатика</a>
 <a href="foreign_languages.html">Странски јазици</a>
-<img src="../images/ss-informatics.png" class="img-fluid" alt="Informatics">
-<img src="../images/ss-foreign_languages.png" class="img-fluid" alt="Foreign Languages">
+{% load static %} <img src="{% static "images/ss-informatics.png" %}" class="img-fluid" alt="Informatics" />
+{% load static %} <img src="{% static "images/ss-foreign_languages.png" %}" class="img-fluid" alt="Foreign Languages" />
 </body>
 </html>

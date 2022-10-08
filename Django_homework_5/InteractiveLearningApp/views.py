@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.contrib.auth import authenticate, logout
+from django.shortcuts import render, redirect
 from .models import Discussion, UserProfile, InfoCourse, Languages, TestQuiz
-from .forms import DiscussionForm, UserProfileForm, InfoCourseForm, LanguageForm, TestQuizForm
+from .forms import *
+
+
+# DiscussionForm, UserProfileForm, InfoCourseForm, LanguageForm, TestQuizForm, createuserform
 
 
 # Create your views here.
@@ -10,7 +14,7 @@ def index(request):
 
 
 def discussions(request):
-    queryset = Discussion.objects.filter(author=request.user).all()
+    queryset = Discussion.objects.all()
     context = {"discussions": queryset, "form": DiscussionForm}
     return render(request, 'discussions.html', context=context)
 
@@ -32,11 +36,43 @@ def info_courses(request):
 
 
 def login(request):
-    return render(request, 'login.html')
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        if request.method == "POST":
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request)
+                return redirect('/')
+        context = {}
+    return render(request, 'login.html', context)
+
+
+def logoutPage(request):
+    logout(request)
+    return redirect('/')
+
+
+# def createuserform():
+# pass
 
 
 def register(request):
-    return render(request, 'register.html')
+    if request.user.is_authenticated:
+        return redirect('homepage.html')
+    else:
+        form = createuserform()
+        if request.method == 'POST':
+            form = createuserform(request.POST)
+            if form.is_valid():
+                user = form.save()
+                return redirect('login')
+        context = {
+            'form': form,
+        }
+    return render(request, 'register.html', context)
 
 
 def foreign_language(request):
@@ -68,7 +104,7 @@ def quizzes(request):
 
 
 def quiz_results(request):
-    queryset = TestQuiz.objects.filter(user1=request.user).all()
+    queryset = TestQuiz.objects.all()
     context = {"quizzes": queryset, "form": TestQuizForm}
     return render(request, 'quiz_results.html', context=context)
 
@@ -78,7 +114,7 @@ def js_c_php(request):
 
 
 def info_fgn_langs(request):
-    return render(request, 'informatics&foreign_languages.html')
+    return render(request, 'InformaticsForeignLanguages.html')
 
 
 def html_css_java(request):
@@ -87,4 +123,3 @@ def html_css_java(request):
 
 def c_swift_python(request):
     return render(request, 'c#(.net)&swift&python.html')
-
